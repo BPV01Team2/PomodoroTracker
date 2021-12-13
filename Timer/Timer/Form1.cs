@@ -11,13 +11,16 @@ using System.Windows.Forms;
 namespace Timer
 {
     public partial class Form1 : Form
-    {
+    {   
+        private int m;
+        private double s;
+        private AboutForm _about = null;
         public Form1()
         {
             InitializeComponent();
+            _about = new AboutForm(this);
         }
-        int m;
-        double s;
+        
         private void Form1_Load(object sender, EventArgs e)
         {
             m = Convert.ToInt32(labelMinutes.Text);
@@ -40,14 +43,14 @@ namespace Timer
             {
                 labelSeconds.Text = "0" + s.ToString();
             }
-            if (s <= 00&&m>0)
-                {
+            if (s <= 00 && m>0)
+            {
                     s = 59;
                     m--;
                     labelMinutes.Text = m.ToString();
                     labelSeconds.Text = s.ToString();
                     s--;
-                }
+            }
                 if (m == 0 && s == 0)
                 {
                     TimerTicker.Stop();
@@ -148,7 +151,19 @@ namespace Timer
             labelSeconds.Text = "00";
             m = Convert.ToInt32(labelMinutes.Text);
             s = Convert.ToDouble(labelSeconds.Text);
-            //TimerTicker.Stop();
+            
+        }
+
+        private void button_about_Click(object sender, EventArgs e)
+        {
+            if(_about != null )
+            {
+                _about.Show();
+            }
+            else
+            {
+                _about = new AboutForm(this);
+            }
         }
     }
 }
