@@ -3,4 +3,6 @@
 ################################################################################
 
 /.vs
-/Timer/Timer/.vs/Timer/v17
+/Timer/Timer/.vs
+/Timer/Timer/obj
+/Timer/Timer/bin
