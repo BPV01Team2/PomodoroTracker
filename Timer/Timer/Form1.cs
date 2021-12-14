@@ -158,6 +158,7 @@ namespace Timer
         {
             if(_about != null )
             {
+                _about = new AboutForm(this);
                 _about.Show();
             }
             else

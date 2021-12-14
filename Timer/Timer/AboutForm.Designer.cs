@@ -67,7 +67,6 @@ namespace Timer
             this.linkLabel_teamlead.TabIndex = 2;
             this.linkLabel_teamlead.TabStop = true;
             this.linkLabel_teamlead.Text = "Demonity543";
-            this.linkLabel_teamlead.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel_teamlead_LinkClicked);
             // 
             // linkLabel_develop
             // 
@@ -80,7 +79,6 @@ namespace Timer
             this.linkLabel_develop.TabIndex = 4;
             this.linkLabel_develop.TabStop = true;
             this.linkLabel_develop.Text = "DanielMikitiuk";
-            this.linkLabel_develop.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel_develop_LinkClicked);
             // 
             // label2
             // 
@@ -117,7 +115,6 @@ namespace Timer
             this.linkLabel1_develop1.TabIndex = 6;
             this.linkLabel1_develop1.TabStop = true;
             this.linkLabel1_develop1.Text = "IitzSergo";
-            this.linkLabel1_develop1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_develop1_LinkClicked);
             // 
             // linkLabel_develop2
             // 
@@ -130,7 +127,6 @@ namespace Timer
             this.linkLabel_develop2.TabIndex = 8;
             this.linkLabel_develop2.TabStop = true;
             this.linkLabel_develop2.Text = "OwerMoon";
-            this.linkLabel_develop2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel_develop2_LinkClicked);
             // 
             // label4
             // 
@@ -155,7 +151,6 @@ namespace Timer
             this.linkLabel_develop3.TabIndex = 10;
             this.linkLabel_develop3.TabStop = true;
             this.linkLabel_develop3.Text = "Andiry-sys";
-            this.linkLabel_develop3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel_develop3_LinkClicked);
             // 
             // label5
             // 
@@ -180,7 +175,6 @@ namespace Timer
             this.linkLabel_teacher.TabIndex = 12;
             this.linkLabel_teacher.TabStop = true;
             this.linkLabel_teacher.Text = "pertsov";
-            this.linkLabel_teacher.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel_teacher_LinkClicked);
             // 
             // label6
             // 
