@@ -52,7 +52,13 @@ namespace Timer
         private void buttonPlusSeconds_Click(object sender, EventArgs e)
         {
             s += 10;
-            if (s >= 60)
+            if (s>=60 && m == 59)
+            {
+                s = 59;
+                m = 59;
+                MessageBox.Show("Більше години зараз ставити не можна");
+            }
+            else  if (s >= 60&&m<60)
             {
                 s = 00;
                 m++;
@@ -157,6 +163,11 @@ namespace Timer
             {
                 _about = new AboutForm(this);
             }
+        }
+
+        private void PomodoroPictureBox_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
