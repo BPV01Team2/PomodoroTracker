@@ -44,10 +44,13 @@ namespace Timer
                     labelSeconds.Text = s.ToString();
                     s--;
             }
-                if (m == 0 && s == 0)
-                {
-                    TimerTicker.Stop();
-                }
+            if (m == 0 && s == 0)
+            {
+               TimerTicker.Stop();
+                MessageBox.Show("Пора Відпочити","Перерва",MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+       
+
+            }
         }
         private void buttonPlusSeconds_Click(object sender, EventArgs e)
         {
