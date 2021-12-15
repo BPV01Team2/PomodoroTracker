@@ -27,27 +27,35 @@ namespace Timer
 
         private void TimerTicker_Tick_1(object sender, EventArgs e)
         {
-            m = Convert.ToInt32(labelMinutes.Text);
-            s = Convert.ToDouble(labelSeconds.Text);
-            s--;
-            labelMinutes.Text = m.ToString();
-            labelSeconds.Text = s.ToString();
-            if (s < 10)
+            if (m <= 0 && s <= 00)
             {
-                labelSeconds.Text = "0" + s.ToString();
+                TimerTicker.Stop();
+                MessageBox.Show("Не можна почати таймер. Час = 0");
             }
-            if (s <= 00 && m>0)
+            else
             {
+                m = Convert.ToInt32(labelMinutes.Text);
+                s = Convert.ToDouble(labelSeconds.Text);
+                s--;
+                labelMinutes.Text = m.ToString();
+                labelSeconds.Text = s.ToString();
+                if (s < 10)
+                {
+                    labelSeconds.Text = "0" + s.ToString();
+                }
+                if (s <= 00 && m > 0)
+                {
                     s = 59;
                     m--;
                     labelMinutes.Text = m.ToString();
                     labelSeconds.Text = s.ToString();
                     s--;
-            }
+                }
                 if (m == 0 && s == 0)
                 {
                     TimerTicker.Stop();
                 }
+            }
         }
         private void buttonPlusSeconds_Click(object sender, EventArgs e)
         {
@@ -79,9 +87,19 @@ namespace Timer
             s -= 10;
             if (s <= 00)
             {
-                s = 59;
-                m--;
+                if (m <= 0)
+                {
+                    s = 00;
+                    m = 00;
+                    MessageBox.Show("Не можна вибирати час з мінусовими значеннями");
+                }
+                else
+                {
+                    s = 59;
+                    m--;
+                }
             }
+
             labelMinutes.Text = m.ToString();
             if (s <= 00 && s < 10)
             {
@@ -98,6 +116,11 @@ namespace Timer
             s = Convert.ToDouble(labelSeconds.Text);
             labelSeconds.Text = "0" + s.ToString();
             m -= 1;
+            if (m < 0)
+            {
+                MessageBox.Show("Не можна вибирати хвилини мінусовим числом");
+                m = 0;
+            }
             if (m == 00)
             {
                 m = 00;
