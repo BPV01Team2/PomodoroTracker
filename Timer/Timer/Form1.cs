@@ -72,7 +72,7 @@ namespace Timer
                 m++;
             }
             labelMinutes.Text = m.ToString();
-            if (s <= 00 && s < 10)
+            if ( s < 10)
             {
                 labelSeconds.Text = "0" + s.ToString();
             }
@@ -101,7 +101,7 @@ namespace Timer
             }
 
             labelMinutes.Text = m.ToString();
-            if (s <= 00 && s < 10)
+            if ( s < 10)
             {
                 labelSeconds.Text = "0" + s.ToString();
             }
@@ -131,7 +131,7 @@ namespace Timer
                 labelMinutes.Text = "0" + m.ToString();
             }
             labelMinutes.Text = m.ToString();
-            if (s <= 00&&s<10)
+            if (s<10)
             {
                 labelSeconds.Text = "0" + s.ToString();
             }
@@ -152,7 +152,7 @@ namespace Timer
                 MessageBox.Show("Більше години зараз ставити не можна");
             }
             labelMinutes.Text = m.ToString();
-            if (s <= 00 && s < 10)
+            if ( s < 10)
             {
                 labelSeconds.Text = "0" + s.ToString();
             }
