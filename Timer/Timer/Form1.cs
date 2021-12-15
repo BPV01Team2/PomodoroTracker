@@ -50,6 +50,7 @@ namespace Timer
                     labelMinutes.Text = m.ToString();
                     labelSeconds.Text = s.ToString();
                     s--;
+                }
             }
             if (m == 0 && s == 0)
             {
@@ -59,6 +60,7 @@ namespace Timer
 
             }
         }
+
         private void buttonPlusSeconds_Click(object sender, EventArgs e)
         {
             s += 10;
