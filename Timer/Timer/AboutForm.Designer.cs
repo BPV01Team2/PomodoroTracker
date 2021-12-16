@@ -29,6 +29,7 @@ namespace Timer
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AboutForm));
             this.label1 = new System.Windows.Forms.Label();
             this.linkLabel_teamlead = new System.Windows.Forms.LinkLabel();
             this.linkLabel_develop = new System.Windows.Forms.LinkLabel();
@@ -42,6 +43,8 @@ namespace Timer
             this.linkLabel_teacher = new System.Windows.Forms.LinkLabel();
             this.label6 = new System.Windows.Forms.Label();
             this.button_close = new System.Windows.Forms.Button();
+            this.PomodoroPictureBox = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.PomodoroPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -49,7 +52,7 @@ namespace Timer
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(14, 30);
+            this.label1.Location = new System.Drawing.Point(145, 94);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(106, 25);
@@ -60,7 +63,7 @@ namespace Timer
             // 
             this.linkLabel_teamlead.AutoSize = true;
             this.linkLabel_teamlead.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.linkLabel_teamlead.Location = new System.Drawing.Point(134, 30);
+            this.linkLabel_teamlead.Location = new System.Drawing.Point(265, 94);
             this.linkLabel_teamlead.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linkLabel_teamlead.Name = "linkLabel_teamlead";
             this.linkLabel_teamlead.Size = new System.Drawing.Size(127, 25);
@@ -73,7 +76,7 @@ namespace Timer
             // 
             this.linkLabel_develop.AutoSize = true;
             this.linkLabel_develop.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.linkLabel_develop.Location = new System.Drawing.Point(134, 70);
+            this.linkLabel_develop.Location = new System.Drawing.Point(265, 134);
             this.linkLabel_develop.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linkLabel_develop.Name = "linkLabel_develop";
             this.linkLabel_develop.Size = new System.Drawing.Size(132, 25);
@@ -87,7 +90,7 @@ namespace Timer
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label2.Location = new System.Drawing.Point(14, 70);
+            this.label2.Location = new System.Drawing.Point(145, 134);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(90, 25);
@@ -99,7 +102,7 @@ namespace Timer
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label3.Location = new System.Drawing.Point(14, 112);
+            this.label3.Location = new System.Drawing.Point(145, 176);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(90, 25);
@@ -110,7 +113,7 @@ namespace Timer
             // 
             this.linkLabel1_develop1.AutoSize = true;
             this.linkLabel1_develop1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.linkLabel1_develop1.Location = new System.Drawing.Point(126, 112);
+            this.linkLabel1_develop1.Location = new System.Drawing.Point(257, 176);
             this.linkLabel1_develop1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linkLabel1_develop1.Name = "linkLabel1_develop1";
             this.linkLabel1_develop1.Size = new System.Drawing.Size(89, 25);
@@ -123,7 +126,7 @@ namespace Timer
             // 
             this.linkLabel_develop2.AutoSize = true;
             this.linkLabel_develop2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.linkLabel_develop2.Location = new System.Drawing.Point(126, 155);
+            this.linkLabel_develop2.Location = new System.Drawing.Point(257, 219);
             this.linkLabel_develop2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linkLabel_develop2.Name = "linkLabel_develop2";
             this.linkLabel_develop2.Size = new System.Drawing.Size(109, 25);
@@ -137,7 +140,7 @@ namespace Timer
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label4.Location = new System.Drawing.Point(14, 155);
+            this.label4.Location = new System.Drawing.Point(145, 219);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(90, 25);
@@ -148,7 +151,7 @@ namespace Timer
             // 
             this.linkLabel_develop3.AutoSize = true;
             this.linkLabel_develop3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.linkLabel_develop3.Location = new System.Drawing.Point(126, 198);
+            this.linkLabel_develop3.Location = new System.Drawing.Point(257, 262);
             this.linkLabel_develop3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linkLabel_develop3.Name = "linkLabel_develop3";
             this.linkLabel_develop3.Size = new System.Drawing.Size(105, 25);
@@ -162,7 +165,7 @@ namespace Timer
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label5.Location = new System.Drawing.Point(14, 198);
+            this.label5.Location = new System.Drawing.Point(145, 262);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(90, 25);
@@ -173,7 +176,7 @@ namespace Timer
             // 
             this.linkLabel_teacher.AutoSize = true;
             this.linkLabel_teacher.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.linkLabel_teacher.Location = new System.Drawing.Point(126, 243);
+            this.linkLabel_teacher.Location = new System.Drawing.Point(257, 307);
             this.linkLabel_teacher.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linkLabel_teacher.Name = "linkLabel_teacher";
             this.linkLabel_teacher.Size = new System.Drawing.Size(76, 25);
@@ -187,7 +190,7 @@ namespace Timer
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label6.Location = new System.Drawing.Point(14, 243);
+            this.label6.Location = new System.Drawing.Point(145, 307);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(91, 25);
@@ -201,7 +204,7 @@ namespace Timer
             this.button_close.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button_close.Font = new System.Drawing.Font("Segoe UI Black", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.button_close.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button_close.Location = new System.Drawing.Point(98, 294);
+            this.button_close.Location = new System.Drawing.Point(194, 350);
             this.button_close.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_close.Name = "button_close";
             this.button_close.Size = new System.Drawing.Size(168, 39);
@@ -210,12 +213,24 @@ namespace Timer
             this.button_close.UseVisualStyleBackColor = false;
             this.button_close.Click += new System.EventHandler(this.button_about_Click);
             // 
+            // PomodoroPictureBox
+            // 
+            this.PomodoroPictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PomodoroPictureBox.BackgroundImage")));
+            this.PomodoroPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PomodoroPictureBox.Location = new System.Drawing.Point(46, 9);
+            this.PomodoroPictureBox.Margin = new System.Windows.Forms.Padding(0);
+            this.PomodoroPictureBox.Name = "PomodoroPictureBox";
+            this.PomodoroPictureBox.Size = new System.Drawing.Size(448, 430);
+            this.PomodoroPictureBox.TabIndex = 14;
+            this.PomodoroPictureBox.TabStop = false;
+            this.PomodoroPictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PomodoroPictureBox_MouseDown);
+            // 
             // AboutForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(380, 356);
+            this.ClientSize = new System.Drawing.Size(919, 552);
             this.Controls.Add(this.button_close);
             this.Controls.Add(this.linkLabel_teacher);
             this.Controls.Add(this.label6);
@@ -229,9 +244,11 @@ namespace Timer
             this.Controls.Add(this.label2);
             this.Controls.Add(this.linkLabel_teamlead);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.PomodoroPictureBox);
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "AboutForm";
             this.Text = "About Pomadoro Tracker";
+            ((System.ComponentModel.ISupportInitialize)(this.PomodoroPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -251,5 +268,6 @@ namespace Timer
         private System.Windows.Forms.LinkLabel linkLabel_teacher;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button_close;
+        private System.Windows.Forms.PictureBox PomodoroPictureBox;
     }
 }

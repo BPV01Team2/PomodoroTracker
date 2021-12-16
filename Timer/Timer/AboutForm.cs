@@ -17,7 +17,11 @@ namespace Timer
         public AboutForm(Form1 timer)
         {
             _parentForm = timer;
-            InitializeComponent(); 
+            InitializeComponent();
+            System.Drawing.Drawing2D.GraphicsPath myPath = new System.Drawing.Drawing2D.GraphicsPath();
+            myPath.AddEllipse(PomodoroPictureBox.Location.X + 7, PomodoroPictureBox.Location.Y + 27, PomodoroPictureBox.Width, PomodoroPictureBox.Height);
+            Region myRegion = new Region(myPath);
+            this.Region = myRegion;
         }        
 
         
@@ -66,6 +70,14 @@ namespace Timer
             ProcessStartInfo info = new ProcessStartInfo("https://github.com/pertsov");
             info.UseShellExecute = true;
             Process.Start(info);
+        }
+
+        
+        private void PomodoroPictureBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            PomodoroPictureBox.Capture = false;
+            Message m = Message.Create(base.Handle, 0xa1, new IntPtr(2), IntPtr.Zero);
+            this.WndProc(ref m);
         }
     }
 }
