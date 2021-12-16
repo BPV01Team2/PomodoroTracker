@@ -54,7 +54,7 @@ namespace Timer
             // 
             this.PomodoroPictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PomodoroPictureBox.BackgroundImage")));
             this.PomodoroPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.PomodoroPictureBox.Location = new System.Drawing.Point(9, 9);
+            this.PomodoroPictureBox.Location = new System.Drawing.Point(100, 38);
             this.PomodoroPictureBox.Margin = new System.Windows.Forms.Padding(0);
             this.PomodoroPictureBox.Name = "PomodoroPictureBox";
             this.PomodoroPictureBox.Size = new System.Drawing.Size(224, 198);
@@ -68,7 +68,7 @@ namespace Timer
             this.labelMinutes.BackColor = System.Drawing.Color.LimeGreen;
             this.labelMinutes.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.labelMinutes.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelMinutes.Location = new System.Drawing.Point(42, 92);
+            this.labelMinutes.Location = new System.Drawing.Point(133, 121);
             this.labelMinutes.Name = "labelMinutes";
             this.labelMinutes.Size = new System.Drawing.Size(49, 41);
             this.labelMinutes.TabIndex = 1;
@@ -86,9 +86,9 @@ namespace Timer
             this.buttonStart.BackColor = System.Drawing.Color.LimeGreen;
             this.buttonStart.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.buttonStart.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonStart.Font = new System.Drawing.Font("Segoe UI Black", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.buttonStart.Font = new System.Drawing.Font("Segoe UI Black", 7.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.buttonStart.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonStart.Location = new System.Drawing.Point(96, 66);
+            this.buttonStart.Location = new System.Drawing.Point(187, 95);
             this.buttonStart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonStart.Name = "buttonStart";
             this.buttonStart.Size = new System.Drawing.Size(40, 24);
@@ -102,8 +102,8 @@ namespace Timer
             this.buttonStop.BackColor = System.Drawing.Color.LimeGreen;
             this.buttonStop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.buttonStop.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonStop.Font = new System.Drawing.Font("Segoe UI Black", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonStop.Location = new System.Drawing.Point(96, 136);
+            this.buttonStop.Font = new System.Drawing.Font("Segoe UI Black", 7.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.buttonStop.Location = new System.Drawing.Point(187, 165);
             this.buttonStop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonStop.Name = "buttonStop";
             this.buttonStop.Size = new System.Drawing.Size(40, 24);
@@ -118,7 +118,7 @@ namespace Timer
             this.buttonMinusSeconds.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.buttonMinusSeconds.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonMinusSeconds.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonMinusSeconds.Location = new System.Drawing.Point(141, 135);
+            this.buttonMinusSeconds.Location = new System.Drawing.Point(232, 164);
             this.buttonMinusSeconds.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonMinusSeconds.Name = "buttonMinusSeconds";
             this.buttonMinusSeconds.Size = new System.Drawing.Size(25, 24);
@@ -132,7 +132,7 @@ namespace Timer
             this.buttonPlusSeconds.BackColor = System.Drawing.Color.LimeGreen;
             this.buttonPlusSeconds.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.buttonPlusSeconds.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonPlusSeconds.Location = new System.Drawing.Point(141, 66);
+            this.buttonPlusSeconds.Location = new System.Drawing.Point(232, 94);
             this.buttonPlusSeconds.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonPlusSeconds.Name = "buttonPlusSeconds";
             this.buttonPlusSeconds.Size = new System.Drawing.Size(25, 24);
@@ -146,7 +146,7 @@ namespace Timer
             this.labelSeconds.BackColor = System.Drawing.Color.LimeGreen;
             this.labelSeconds.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.labelSeconds.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelSeconds.Location = new System.Drawing.Point(141, 92);
+            this.labelSeconds.Location = new System.Drawing.Point(232, 121);
             this.labelSeconds.Name = "labelSeconds";
             this.labelSeconds.Size = new System.Drawing.Size(46, 41);
             this.labelSeconds.TabIndex = 6;
@@ -158,7 +158,7 @@ namespace Timer
             this.labeltwopoints.BackColor = System.Drawing.Color.LimeGreen;
             this.labeltwopoints.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.labeltwopoints.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labeltwopoints.Location = new System.Drawing.Point(96, 92);
+            this.labeltwopoints.Location = new System.Drawing.Point(187, 121);
             this.labeltwopoints.Name = "labeltwopoints";
             this.labeltwopoints.Size = new System.Drawing.Size(40, 41);
             this.labeltwopoints.TabIndex = 7;
@@ -170,7 +170,7 @@ namespace Timer
             this.buttonPlusMinutes.BackColor = System.Drawing.Color.LimeGreen;
             this.buttonPlusMinutes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.buttonPlusMinutes.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonPlusMinutes.Location = new System.Drawing.Point(65, 65);
+            this.buttonPlusMinutes.Location = new System.Drawing.Point(157, 94);
             this.buttonPlusMinutes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonPlusMinutes.Name = "buttonPlusMinutes";
             this.buttonPlusMinutes.Size = new System.Drawing.Size(25, 24);
@@ -185,7 +185,7 @@ namespace Timer
             this.buttonMinusMinutes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.buttonMinusMinutes.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonMinusMinutes.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonMinusMinutes.Location = new System.Drawing.Point(66, 135);
+            this.buttonMinusMinutes.Location = new System.Drawing.Point(157, 165);
             this.buttonMinusMinutes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonMinusMinutes.Name = "buttonMinusMinutes";
             this.buttonMinusMinutes.Size = new System.Drawing.Size(25, 24);
@@ -201,7 +201,7 @@ namespace Timer
             this.buttonRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonRefresh.Font = new System.Drawing.Font("Segoe UI Black", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.buttonRefresh.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonRefresh.Location = new System.Drawing.Point(65, 45);
+            this.buttonRefresh.Location = new System.Drawing.Point(156, 74);
             this.buttonRefresh.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonRefresh.Name = "buttonRefresh";
             this.buttonRefresh.Size = new System.Drawing.Size(101, 19);
@@ -217,7 +217,7 @@ namespace Timer
             this.button_about.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button_about.Font = new System.Drawing.Font("Segoe UI Black", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.button_about.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button_about.Location = new System.Drawing.Point(76, 163);
+            this.button_about.Location = new System.Drawing.Point(167, 192);
             this.button_about.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_about.Name = "button_about";
             this.button_about.Size = new System.Drawing.Size(80, 19);
@@ -231,7 +231,7 @@ namespace Timer
             this.close_button.BackColor = System.Drawing.Color.Red;
             this.close_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.close_button.Font = new System.Drawing.Font("Segoe UI Black", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.close_button.Location = new System.Drawing.Point(106, 16);
+            this.close_button.Location = new System.Drawing.Point(197, 45);
             this.close_button.Name = "close_button";
             this.close_button.Size = new System.Drawing.Size(27, 23);
             this.close_button.TabIndex = 12;
@@ -244,7 +244,7 @@ namespace Timer
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(708, 256);
+            this.ClientSize = new System.Drawing.Size(468, 297);
             this.Controls.Add(this.close_button);
             this.Controls.Add(this.button_about);
             this.Controls.Add(this.buttonRefresh);

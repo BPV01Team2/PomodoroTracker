@@ -61,7 +61,7 @@ namespace Timer
             if (m == 0 && s == 0)
             {
                TimerTicker.Stop();
-                MessageBox.Show("Пора Відпочити","Перерва",MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                MessageBox.Show("Пора Відпочити","Перерва",MessageBoxButtons.YesNo);
        
 
             }
