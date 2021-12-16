@@ -16,6 +16,7 @@ namespace Timer
         private Form1 _parentForm = null;
         public AboutForm(Form1 timer)
         {
+            //
             _parentForm = timer;
             InitializeComponent();
             System.Drawing.Drawing2D.GraphicsPath myPath = new System.Drawing.Drawing2D.GraphicsPath();
