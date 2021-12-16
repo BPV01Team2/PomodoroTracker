@@ -1,4 +1,4 @@
-﻿
+
 using System;
 
 namespace Timer
@@ -46,6 +46,7 @@ namespace Timer
             this.buttonMinusMinutes = new System.Windows.Forms.Button();
             this.buttonRefresh = new System.Windows.Forms.Button();
             this.button_about = new System.Windows.Forms.Button();
+            this.TimerTickerRest = new System.Windows.Forms.Timer(this.components);
             this.close_button = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.PomodoroPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -226,6 +227,10 @@ namespace Timer
             this.button_about.UseVisualStyleBackColor = false;
             this.button_about.Click += new System.EventHandler(this.button_about_Click);
             // 
+            // TimerTickerRest
+            // 
+            this.TimerTickerRest.Interval = 1000;
+            this.TimerTickerRest.Tick += new System.EventHandler(this.TimerTickerRest_Tick);
             // close_button
             // 
             this.close_button.BackColor = System.Drawing.Color.Red;
@@ -292,6 +297,7 @@ namespace Timer
         private System.Windows.Forms.Button buttonMinusMinutes;
         private System.Windows.Forms.Button buttonRefresh;
         private System.Windows.Forms.Button button_about;
+        private System.Windows.Forms.Timer TimerTickerRest;
         private System.Windows.Forms.Button close_button;
     }
 }
