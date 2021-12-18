@@ -48,6 +48,7 @@ namespace Timer
             this.button_about = new System.Windows.Forms.Button();
             this.TimerTickerRest = new System.Windows.Forms.Timer(this.components);
             this.close_button = new System.Windows.Forms.Button();
+            this.button_Settinges = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.PomodoroPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,7 +62,6 @@ namespace Timer
             this.PomodoroPictureBox.Size = new System.Drawing.Size(224, 198);
             this.PomodoroPictureBox.TabIndex = 0;
             this.PomodoroPictureBox.TabStop = false;
-            this.PomodoroPictureBox.Click += new System.EventHandler(this.PomodoroPictureBox_Click);
             this.PomodoroPictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PomodoroPictureBox_MouseDown);
             // 
             // labelMinutes
@@ -73,7 +73,7 @@ namespace Timer
             this.labelMinutes.Name = "labelMinutes";
             this.labelMinutes.Size = new System.Drawing.Size(49, 41);
             this.labelMinutes.TabIndex = 1;
-            this.labelMinutes.Text = "25";
+            this.labelMinutes.Text = "0";
             this.labelMinutes.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // TimerTicker
@@ -231,6 +231,7 @@ namespace Timer
             // 
             this.TimerTickerRest.Interval = 1000;
             this.TimerTickerRest.Tick += new System.EventHandler(this.TimerTickerRest_Tick);
+            // 
             // close_button
             // 
             this.close_button.BackColor = System.Drawing.Color.Red;
@@ -244,12 +245,26 @@ namespace Timer
             this.close_button.UseVisualStyleBackColor = false;
             this.close_button.Click += new System.EventHandler(this.close_button_Click);
             // 
+            // button_Settinges
+            // 
+            this.button_Settinges.BackColor = System.Drawing.Color.LimeGreen;
+            this.button_Settinges.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.button_Settinges.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button_Settinges.Location = new System.Drawing.Point(263, 94);
+            this.button_Settinges.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_Settinges.Name = "button_Settinges";
+            this.button_Settinges.Size = new System.Drawing.Size(31, 24);
+            this.button_Settinges.TabIndex = 13;
+            this.button_Settinges.UseVisualStyleBackColor = false;
+            this.button_Settinges.Click += new System.EventHandler(this.button_Settinges_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(468, 297);
+            this.Controls.Add(this.button_Settinges);
             this.Controls.Add(this.close_button);
             this.Controls.Add(this.button_about);
             this.Controls.Add(this.buttonRefresh);
@@ -299,6 +314,7 @@ namespace Timer
         private System.Windows.Forms.Button button_about;
         private System.Windows.Forms.Timer TimerTickerRest;
         private System.Windows.Forms.Button close_button;
+        private System.Windows.Forms.Button button_Settinges;
     }
 }
 
