@@ -1,71 +1,146 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Drawing.Drawing2D;
 using System.Windows.Forms;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace Timer
 {
     public partial class Form1 : Form
-    {   
+    {
+        private int id = 1;
         private int m;
         private double s;
         private AboutForm _about = null;
+        private SettingForm _setting = null;
+        private readonly string _path = $"{Environment.CurrentDirectory }\\Parmeteres.json";
+        private FileIOStream _file = null;
+        private List<SaveClass> _saveClasses = null;
         public Form1()
         {
             InitializeComponent();
             _about = new AboutForm(this);
+            _setting = new SettingForm(this);
+            _file = new FileIOStream(_path);            
+            button_Settinges.Text += "⚙";
+            GraphicsPath myPath = new GraphicsPath();
+            myPath.AddEllipse(PomodoroPictureBox.Location.X + 7, PomodoroPictureBox.Location.Y + 29, PomodoroPictureBox.Width, PomodoroPictureBox.Height);
+            Region myRegion = new Region(myPath);
+            this.Region = myRegion;            
+            _saveClasses = _file.LoadData();
         }
         
         private void Form1_Load(object sender, EventArgs e)
         {
-            m = Convert.ToInt32(labelMinutes.Text);
-            s = Convert.ToDouble(labelSeconds.Text);
+            if (_saveClasses != null)
+            {
+                m = _saveClasses.Select(x => x.MinutesJob).Single();
+                s = _saveClasses.Select(x => x.SecondesJob).Single();
+                labelMinutes.Text = m.ToString();
+                labelSeconds.Text = "0" + s.ToString();
+            }
+            
+           
         }
 
         private void buttonStart_Click(object sender, EventArgs e)
         {
-            TimerTicker.Enabled = true;
+            if (id == 1)
+            {
+                TimerTicker.Start();
+            }else if (id == 0)
+            {
+                TimerTickerRest.Start();
+            }
         }
 
         private void TimerTicker_Tick_1(object sender, EventArgs e)
         {
-            m = Convert.ToInt32(labelMinutes.Text);
-            s = Convert.ToDouble(labelSeconds.Text);
-            s--;
-            labelMinutes.Text = m.ToString();
-            labelSeconds.Text = s.ToString();
-            if (s < 10)
+            id = 1;
+            if (m == 0 && s == 00)
             {
-                labelSeconds.Text = "0" + s.ToString();
+                TimerTicker.Stop();
+                MessageBox.Show("Не можна почати таймер. Час = 0");
             }
-            if (s <= 00 && m>0)
+            else
             {
+                s = _saveClasses.Select(x => x.SecondesJob).Single();
+                m = _saveClasses.Select(x => x.MinutesJob).Single();
+
+                m = Convert.ToInt32(labelMinutes.Text);
+                s = Convert.ToDouble(labelSeconds.Text);
+
+                s--;
+                labelMinutes.Text = m.ToString();
+                labelSeconds.Text = s.ToString();
+                if (s < 10)
+                {
+                    labelSeconds.Text = "0" + s.ToString();
+                }
+                if (s <= 00 && m > 0)
+                {
                     s = 59;
                     m--;
                     labelMinutes.Text = m.ToString();
                     labelSeconds.Text = s.ToString();
-                    s--;
-            }
-                if (m == 0 && s == 0)
-                {
-                    TimerTicker.Stop();
                 }
+            }
+            if (m == 0 && s == 0)
+            {
+               TimerTicker.Stop();
+               DialogResult result= MessageBox.Show("Пора Відпочити","Перерва",MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                if (result == DialogResult.Yes)
+                {
+                    m = _saveClasses.Select(x => x.MinutesRest).Single();
+                    s = _saveClasses.Select(x => x.SecondesRest).Single();
+
+                    labelMinutes.Text = m.ToString();
+                    labelSeconds.Text = s.ToString();
+
+                    TimerTickerRest.Start();
+                }
+                else
+                {
+                    s = _saveClasses.Select(x => x.SecondesJob).Single();
+                    m = _saveClasses.Select(x => x.MinutesJob).Single();
+
+                    labelMinutes.Text = m.ToString();
+                    labelSeconds.Text = s.ToString();
+                    TimerTicker.Start();
+                    
+                    if (s < 10)
+                    {
+                        labelSeconds.Text = "0" + s.ToString();
+                    }
+                    if (s == 00 && m > 0)
+                    {
+                        s = 59;
+                        m--;
+                        labelMinutes.Text = m.ToString();
+                        labelSeconds.Text = s.ToString();
+                    }
+                }
+
+            }
         }
+
         private void buttonPlusSeconds_Click(object sender, EventArgs e)
         {
             s += 10;
-            if (s >= 60)
+            if (s>=60 && m == 59)
+            {
+                s = 59;
+                m = 59;
+                MessageBox.Show("Більше години зараз ставити не можна");
+            }
+            else  if (s >= 60&&m<60)
             {
                 s = 00;
                 m++;
             }
             labelMinutes.Text = m.ToString();
-            if (s <= 00 && s < 10)
+            if ( s < 10)
             {
                 labelSeconds.Text = "0" + s.ToString();
             }
@@ -80,11 +155,21 @@ namespace Timer
             s -= 10;
             if (s <= 00)
             {
-                s = 59;
-                m--;
+                if (m <= 0)
+                {
+                    s = 00;
+                    m = 00;
+                    MessageBox.Show("Не можна вибирати час з мінусовими значеннями");
+                }
+                else
+                {
+                    s = 59;
+                    m--;
+                }
             }
+
             labelMinutes.Text = m.ToString();
-            if (s <= 00 && s < 10)
+            if ( s < 10)
             {
                 labelSeconds.Text = "0" + s.ToString();
             }
@@ -99,6 +184,11 @@ namespace Timer
             s = Convert.ToDouble(labelSeconds.Text);
             labelSeconds.Text = "0" + s.ToString();
             m -= 1;
+            if (m < 0)
+            {
+                MessageBox.Show("Не можна вибирати хвилини мінусовим числом");
+                m = 0;
+            }
             if (m == 00)
             {
                 m = 00;
@@ -109,7 +199,7 @@ namespace Timer
                 labelMinutes.Text = "0" + m.ToString();
             }
             labelMinutes.Text = m.ToString();
-            if (s <= 00&&s<10)
+            if (s<10)
             {
                 labelSeconds.Text = "0" + s.ToString();
             }
@@ -130,7 +220,7 @@ namespace Timer
                 MessageBox.Show("Більше години зараз ставити не можна");
             }
             labelMinutes.Text = m.ToString();
-            if (s <= 00 && s < 10)
+            if ( s < 10)
             {
                 labelSeconds.Text = "0" + s.ToString();
             }
@@ -143,15 +233,18 @@ namespace Timer
         private void buttonStop_Click(object sender, EventArgs e)
         {
             TimerTicker.Stop();
+            TimerTickerRest.Stop();
         }
 
         private void buttonRefresh_Click(object sender, EventArgs e)
         {
-            labelMinutes.Text = "25";
-            labelSeconds.Text = "00";
-            m = Convert.ToInt32(labelMinutes.Text);
-            s = Convert.ToDouble(labelSeconds.Text);
             
+            s = _saveClasses.Select(x => x.SecondesJob).Single();
+            m = _saveClasses.Select(x => x.MinutesJob).Single();
+            labelMinutes.Text = "";
+            labelSeconds.Text = "";
+            labelMinutes.Text += m.ToString();
+            labelSeconds.Text += "0" + s.ToString();            
         }
 
         private void button_about_Click(object sender, EventArgs e)
@@ -164,6 +257,98 @@ namespace Timer
             else
             {
                 _about = new AboutForm(this);
+            }
+        }      
+
+        private void TimerTickerRest_Tick(object sender, EventArgs e)
+        {
+            id = 0;
+            if (m == 0 && s == 00)
+            {
+                TimerTickerRest.Stop();
+                MessageBox.Show("Не можна почати таймер. Час = 0");
+            }
+            else
+            {
+                s = _saveClasses.Select(x => x.SecondesRest).Single();
+                m = _saveClasses.Select(x => x.MinutesRest).Single();
+
+                m = Convert.ToInt32(labelMinutes.Text);
+                s = Convert.ToDouble(labelSeconds.Text);
+                s--;
+                labelMinutes.Text = m.ToString();
+                labelSeconds.Text = s.ToString();
+                if (s < 10)
+                {
+                    labelSeconds.Text = "0" + s.ToString();
+                }
+                if (s <= 00 && m > 0)
+                {
+                    s = 59;
+                    m--;
+                    labelMinutes.Text = m.ToString();
+                    labelSeconds.Text = s.ToString();
+                }
+            }
+            if (m == 0 && s == 0)
+            {
+                TimerTickerRest.Stop();
+                DialogResult result = MessageBox.Show("Пора працювати", "Робота", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                if (result == DialogResult.Yes)
+                {
+                    s = _saveClasses.Select(x => x.SecondesJob).Single();
+                    m = _saveClasses.Select(x => x.MinutesJob).Single();
+
+                    labelMinutes.Text = m.ToString();
+                    labelSeconds.Text = s.ToString();
+                    TimerTicker.Start();
+                }
+                else
+                {
+                    s = _saveClasses.Select(x => x.SecondesRest).Single();
+                    m = _saveClasses.Select(x => x.MinutesRest).Single();
+
+                    labelMinutes.Text = m.ToString();
+                    labelSeconds.Text = s.ToString();
+                    TimerTickerRest.Start();
+                    if (s < 10)
+                    {
+                        labelSeconds.Text = "0" + s.ToString();
+                    }
+                    if (s == 00 && m > 0)
+                    {
+                        s = 59;
+                        m--;
+                        labelMinutes.Text = m.ToString();
+                        labelSeconds.Text = s.ToString();
+                    }
+                }
+
+            }
+        }
+        private void PomodoroPictureBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            PomodoroPictureBox.Capture = false;
+            Message m = Message.Create(base.Handle, 0xa1, new IntPtr(2), IntPtr.Zero);
+            this.WndProc(ref m);
+
+        }
+
+        private void close_button_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void button_Settinges_Click(object sender, EventArgs e)
+        {
+            if (_setting != null)
+            {
+                _setting = new SettingForm(this);
+                _setting.Show();
+            }
+            else
+            {
+                _setting = new SettingForm(this);
             }
         }
     }
