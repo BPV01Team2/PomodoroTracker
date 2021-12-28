@@ -4,6 +4,8 @@ using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 using System.Linq;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Media;
 
 namespace Timer
 {
@@ -13,39 +15,28 @@ namespace Timer
         private int m;
         private double s;
         private AboutForm _about = null;
-        private SettingForm _setting = null;
-        private readonly string _path = $"{Environment.CurrentDirectory }\\Parmeteres.json";
-        private FileIOStream _file = null;
-        private List<SaveClass> _saveClasses = null;
         public Form1()
         {
             InitializeComponent();
             _about = new AboutForm(this);
-            _setting = new SettingForm(this);
-            _file = new FileIOStream(_path);            
-            button_Settinges.Text += "⚙";
             GraphicsPath myPath = new GraphicsPath();
+            button_Settinges.Text = "Music";
             myPath.AddEllipse(PomodoroPictureBox.Location.X + 7, PomodoroPictureBox.Location.Y + 29, PomodoroPictureBox.Width, PomodoroPictureBox.Height);
             Region myRegion = new Region(myPath);
             this.Region = myRegion;            
-            _saveClasses = _file.LoadData();
         }
         
         private void Form1_Load(object sender, EventArgs e)
         {
-            if (_saveClasses != null)
-            {
-                m = _saveClasses.Select(x => x.MinutesJob).Single();
-                s = _saveClasses.Select(x => x.SecondesJob).Single();
-                labelMinutes.Text = m.ToString();
-                labelSeconds.Text = "0" + s.ToString();
-            }
-            
-           
+            m = 15;
+            s = 00;
+            labelMinutes.Text = m.ToString();
+            labelSeconds.Text = s.ToString();
         }
 
         private void buttonStart_Click(object sender, EventArgs e)
         {
+            
             if (id == 1)
             {
                 TimerTicker.Start();
@@ -65,8 +56,6 @@ namespace Timer
             }
             else
             {
-                s = _saveClasses.Select(x => x.SecondesJob).Single();
-                m = _saveClasses.Select(x => x.MinutesJob).Single();
 
                 m = Convert.ToInt32(labelMinutes.Text);
                 s = Convert.ToDouble(labelSeconds.Text);
@@ -89,12 +78,30 @@ namespace Timer
             if (m == 0 && s == 0)
             {
                TimerTicker.Stop();
-               DialogResult result= MessageBox.Show("Пора Відпочити","Перерва",MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                try
+                {
+                    SoundPlayer player = new SoundPlayer();
+                    player.SoundLocation = button_Settinges.Text;
+                    if (button_Settinges.Text != string.Empty)
+                    {
+                        player.Load();
+                        player.PlaySync();
+                        MessageBox.Show("Час вийшов!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ви не вибрали музику.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                DialogResult result= MessageBox.Show("Пора Відпочити","Перерва",MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                 if (result == DialogResult.Yes)
                 {
-                    m = _saveClasses.Select(x => x.MinutesRest).Single();
-                    s = _saveClasses.Select(x => x.SecondesRest).Single();
-
+                    m = 5;
+                    s = 00;
                     labelMinutes.Text = m.ToString();
                     labelSeconds.Text = s.ToString();
 
@@ -102,9 +109,8 @@ namespace Timer
                 }
                 else
                 {
-                    s = _saveClasses.Select(x => x.SecondesJob).Single();
-                    m = _saveClasses.Select(x => x.MinutesJob).Single();
-
+                    m = 15;
+                    s = 00;
                     labelMinutes.Text = m.ToString();
                     labelSeconds.Text = s.ToString();
                     TimerTicker.Start();
@@ -238,9 +244,6 @@ namespace Timer
 
         private void buttonRefresh_Click(object sender, EventArgs e)
         {
-            
-            s = _saveClasses.Select(x => x.SecondesJob).Single();
-            m = _saveClasses.Select(x => x.MinutesJob).Single();
             labelMinutes.Text = "";
             labelSeconds.Text = "";
             labelMinutes.Text += m.ToString();
@@ -270,8 +273,6 @@ namespace Timer
             }
             else
             {
-                s = _saveClasses.Select(x => x.SecondesRest).Single();
-                m = _saveClasses.Select(x => x.MinutesRest).Single();
 
                 m = Convert.ToInt32(labelMinutes.Text);
                 s = Convert.ToDouble(labelSeconds.Text);
@@ -293,21 +294,38 @@ namespace Timer
             if (m == 0 && s == 0)
             {
                 TimerTickerRest.Stop();
+                try
+                {
+                    SoundPlayer player = new SoundPlayer();
+                    player.SoundLocation = button_Settinges.Text;
+                    if (button_Settinges.Text != string.Empty)
+                    {
+                        player.Load();
+                        player.PlaySync();
+                        MessageBox.Show("Час вийшов!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ви не вибрали музику.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
                 DialogResult result = MessageBox.Show("Пора працювати", "Робота", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                 if (result == DialogResult.Yes)
                 {
-                    s = _saveClasses.Select(x => x.SecondesJob).Single();
-                    m = _saveClasses.Select(x => x.MinutesJob).Single();
-
+                    m = 15;
+                    s = 00;
                     labelMinutes.Text = m.ToString();
                     labelSeconds.Text = s.ToString();
                     TimerTicker.Start();
                 }
                 else
                 {
-                    s = _saveClasses.Select(x => x.SecondesRest).Single();
-                    m = _saveClasses.Select(x => x.MinutesRest).Single();
-
+                    m = 5;
+                    s = 00;
                     labelMinutes.Text = m.ToString();
                     labelSeconds.Text = s.ToString();
                     TimerTickerRest.Start();
@@ -338,17 +356,13 @@ namespace Timer
         {
             this.Close();
         }
-
         private void button_Settinges_Click(object sender, EventArgs e)
         {
-            if (_setting != null)
+            MessageBox.Show("Тут ви виберете музику,яка спрацьовуватиме при закінченні часу в таймері. Вибирайте музику в форматі .wav\n(інші формати та файли можуть не спрацювати,або програма видасть помилку)");
+            OpenFileDialog openFile = new OpenFileDialog();
+            if (openFile.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                _setting = new SettingForm(this);
-                _setting.Show();
-            }
-            else
-            {
-                _setting = new SettingForm(this);
+                this.button_Settinges.Text = openFile.FileName;
             }
         }
     }
